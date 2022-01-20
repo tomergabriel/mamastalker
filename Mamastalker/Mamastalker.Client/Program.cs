@@ -32,22 +32,11 @@ namespace Mamastalker.Client
 
             socketClient.Connect(endPoint);
 
-            Console.WriteLine("Connected to server, you can start writing people to send [enter their name and then age]");
+            socketClient.SendData("subscribe");
 
-            while (true)
-            {
-                var personName = Console.ReadLine();
+            Console.WriteLine("Connected to server, enter any key to exit...");
 
-                var personAge = int.Parse(Console.ReadLine());
-
-                var person = new Person()
-                {
-                    Name = personName,
-                    Age = personAge,
-                };
-
-                socketClient.SendData(person);
-            }
+            Console.ReadKey();
         }
     }
 }

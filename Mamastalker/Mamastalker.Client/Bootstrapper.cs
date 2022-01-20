@@ -1,32 +1,29 @@
-﻿using Mamastalker.Client.Logic.Clients;
+﻿using Mamastalker.Client.Data.OnDataHandlers;
+using Mamastalker.Client.Logic.Clients;
 using Mamastalker.Client.Logic.Clients.Abstract;
-using Mamastalker.Client.Presentation.OnDataHandlers;
-using Mamastalker.Common;
-using Mamastalker.Common.ConsolePresentation;
 using Mamastalker.Common.Logic.DataConverters.Stringifies;
+using System.Drawing;
 using System.Net.Sockets;
 
 namespace Mamastalker.Client
 {
     public class Bootstrapper
     {
-        public IClient<Person> BootstrapClient()
+        public IClient<string> BootstrapClient()
         {
+            var folderName = "clientScreenshots";
+            
             var tcpClient = new TcpClient();
-
-            var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
             var byteArrayStringify = new ByteArrayStringify();
 
             var stringStringify = new StringStringify();
 
-            var genericJsonStringify = new GenericJsonStringify<Person>();
+            var genericJsonStringify = new GenericJsonStringify<Bitmap>();
 
-            var client = new TCPClient<Person>(genericJsonStringify, byteArrayStringify, tcpClient);
+            var client = new TCPClient<string>(stringStringify, byteArrayStringify, tcpClient);
 
-            var output = new ConsoleOutput<string>();
-
-            var onDataHandler = new OutputOnDataHandler<string, string>(stringStringify, output);
+            var onDataHandler = new BitmapSaveToFileOnDataHandler<string>(folderName, genericJsonStringify);
 
             client.OnReciveDataEvent += (recivedObject) => onDataHandler.OnDataEventHandler(recivedObject.ToString());
 

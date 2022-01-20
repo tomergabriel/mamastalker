@@ -7,13 +7,13 @@ using System.Linq;
 
 namespace Mamastalker.Client.Data.OnDataHandlers
 {
-    public class SaveToFileOnDataHandler<TData> : IOnDataHandler<TData>
+    public class BitmapSaveToFileOnDataHandler<TData> : IOnDataHandler<TData>
     {
         private readonly string _folderName;
 
         private readonly IDataConverter<TData, Bitmap> _dataToBitmapDataConverter;
 
-        public SaveToFileOnDataHandler(string folderName,
+        public BitmapSaveToFileOnDataHandler(string folderName,
                                        IDataConverter<TData, Bitmap> dataToBitmapDataConverter)
         {
             if (string.IsNullOrEmpty(folderName))
