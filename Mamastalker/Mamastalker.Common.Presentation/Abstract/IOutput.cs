@@ -1,4 +1,4 @@
-﻿namespace PingPong.Common.Presentation.Abstract
+﻿namespace Mamastalker.Common.Presentation.Abstract
 {
     public interface IOutput<TOut>
     {

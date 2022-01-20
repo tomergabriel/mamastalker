@@ -1,8 +1,8 @@
-﻿using PingPong.Common.Logic.DataConverters.Abstract;
-using PingPong.Server.Logic.ResponseHandlers.Abstract;
+﻿using Mamastalker.Common.Logic.DataConverters.Abstract;
+using Mamastalker.Server.Logic.ResponseHandlers.Abstract;
 using System;
 
-namespace PingPong.Server.Logic.ResponseHandlers
+namespace Mamastalker.Server.Logic.ResponseHandlers
 {
     public class SendBackResponseHandler<TData> : IResponseHandler<TData>
     {

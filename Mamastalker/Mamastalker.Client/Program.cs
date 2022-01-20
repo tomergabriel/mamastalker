@@ -1,8 +1,8 @@
-﻿using PingPong.Common;
+﻿using Mamastalker.Common;
 using System;
 using System.Net;
 
-namespace PingPong.Client
+namespace Mamastalker.Client
 {
     class Program
     {

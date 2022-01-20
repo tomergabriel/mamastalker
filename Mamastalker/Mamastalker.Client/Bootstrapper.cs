@@ -1,12 +1,12 @@
-﻿using PingPong.Client.Logic.Clients;
-using PingPong.Client.Logic.Clients.Abstract;
-using PingPong.Client.Presentation.OnDataHandlers;
-using PingPong.Common;
-using PingPong.Common.ConsolePresentation;
-using PingPong.Common.Logic.DataConverters.Stringifies;
+﻿using Mamastalker.Client.Logic.Clients;
+using Mamastalker.Client.Logic.Clients.Abstract;
+using Mamastalker.Client.Presentation.OnDataHandlers;
+using Mamastalker.Common;
+using Mamastalker.Common.ConsolePresentation;
+using Mamastalker.Common.Logic.DataConverters.Stringifies;
 using System.Net.Sockets;
 
-namespace PingPong.Client
+namespace Mamastalker.Client
 {
     public class Bootstrapper
     {

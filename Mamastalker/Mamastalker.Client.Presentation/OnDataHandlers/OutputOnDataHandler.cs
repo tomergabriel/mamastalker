@@ -1,8 +1,8 @@
-﻿using PingPong.Client.Logic.OnDataHandlers.Abstract;
-using PingPong.Common.Logic.DataConverters.Abstract;
-using PingPong.Common.Presentation.Abstract;
+﻿using Mamastalker.Client.Logic.OnDataHandlers.Abstract;
+using Mamastalker.Common.Logic.DataConverters.Abstract;
+using Mamastalker.Common.Presentation.Abstract;
 
-namespace PingPong.Client.Presentation.OnDataHandlers
+namespace Mamastalker.Client.Presentation.OnDataHandlers
 {
     public class OutputOnDataHandler<TData, TOut> : IOnDataHandler<TData>
     {

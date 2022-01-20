@@ -1,7 +1,7 @@
-﻿using PingPong.Common.Presentation.Abstract;
+﻿using Mamastalker.Common.Presentation.Abstract;
 using System;
 
-namespace PingPong.Common.ConsolePresentation
+namespace Mamastalker.Common.ConsolePresentation
 {
     public class ConsoleOutput<TOut> : IOutput<TOut>
     {

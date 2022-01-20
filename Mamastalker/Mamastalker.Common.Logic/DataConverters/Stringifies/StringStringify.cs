@@ -1,6 +1,6 @@
-﻿using PingPong.Common.Logic.DataConverters.Stringifies.Abstract;
+﻿using Mamastalker.Common.Logic.DataConverters.Stringifies.Abstract;
 
-namespace PingPong.Common.Logic.DataConverters.Stringifies
+namespace Mamastalker.Common.Logic.DataConverters.Stringifies
 {
     public class StringStringify : IStringify<string>
     {

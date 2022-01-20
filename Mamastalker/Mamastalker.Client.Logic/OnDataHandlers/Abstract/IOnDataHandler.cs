@@ -1,4 +1,4 @@
-﻿namespace PingPong.Client.Logic.OnDataHandlers.Abstract
+﻿namespace Mamastalker.Client.Logic.OnDataHandlers.Abstract
 {
     public interface IOnDataHandler<TData>
     {

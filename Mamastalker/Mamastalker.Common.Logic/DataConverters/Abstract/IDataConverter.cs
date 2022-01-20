@@ -1,4 +1,4 @@
-﻿namespace PingPong.Common.Logic.DataConverters.Abstract
+﻿namespace Mamastalker.Common.Logic.DataConverters.Abstract
 {
     public interface IDataConverter<TConvertFrom, TConvertTo>
     {

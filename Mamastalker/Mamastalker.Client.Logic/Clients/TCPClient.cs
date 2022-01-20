@@ -1,12 +1,12 @@
-﻿using PingPong.Client.Logic.Clients.Abstract;
-using PingPong.Common.Logic.DataConverters.Stringifies.Abstract;
+﻿using Mamastalker.Client.Logic.Clients.Abstract;
+using Mamastalker.Common.Logic.DataConverters.Stringifies.Abstract;
 using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PingPong.Client.Logic.Clients
+namespace Mamastalker.Client.Logic.Clients
 {
     public class TCPClient<TData> : IClient<TData>
     {

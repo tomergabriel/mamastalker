@@ -1,4 +1,4 @@
-﻿namespace PingPong.Common
+﻿namespace Mamastalker.Common
 {
     public class Person
     {

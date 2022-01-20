@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PingPong.Server.Logic.ResponseHandlers.Abstract
+namespace Mamastalker.Server.Logic.ResponseHandlers.Abstract
 {
     public interface IResponseHandler<TData>
     {

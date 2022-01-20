@@ -1,7 +1,7 @@
-﻿using PingPong.Common.Logic.DataConverters.Stringifies.Abstract;
+﻿using Mamastalker.Common.Logic.DataConverters.Stringifies.Abstract;
 using System.Text;
 
-namespace PingPong.Common.Logic.DataConverters.Stringifies
+namespace Mamastalker.Common.Logic.DataConverters.Stringifies
 {
     public class ByteArrayStringify : IStringify<byte[]>
     {

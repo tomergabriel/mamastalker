@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace PingPong.Server.Logic.Servers.Abstract
+namespace Mamastalker.Server.Logic.Servers.Abstract
 {
     public interface IServer
     {

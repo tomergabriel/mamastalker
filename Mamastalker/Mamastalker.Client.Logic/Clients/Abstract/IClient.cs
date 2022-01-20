@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace PingPong.Client.Logic.Clients.Abstract
+namespace Mamastalker.Client.Logic.Clients.Abstract
 {
     public interface IClient<TData>
     {

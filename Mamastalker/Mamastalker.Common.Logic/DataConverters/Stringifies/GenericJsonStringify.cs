@@ -1,7 +1,7 @@
-﻿using PingPong.Common.Logic.DataConverters.Stringifies.Abstract;
+﻿using Mamastalker.Common.Logic.DataConverters.Stringifies.Abstract;
 using System.Text.Json;
 
-namespace PingPong.Common.Logic.DataConverters.Stringifies
+namespace Mamastalker.Common.Logic.DataConverters.Stringifies
 {
     public class GenericJsonStringify<T> : IStringify<T>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace PingPong.Server
+namespace Mamastalker.Server
 {
     class Program
     {

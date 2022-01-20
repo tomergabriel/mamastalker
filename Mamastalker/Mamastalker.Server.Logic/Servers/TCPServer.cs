@@ -1,11 +1,11 @@
-﻿using PingPong.Server.Logic.ResponseHandlers.Abstract;
-using PingPong.Server.Logic.Servers.Abstract;
+﻿using Mamastalker.Server.Logic.ResponseHandlers.Abstract;
+using Mamastalker.Server.Logic.Servers.Abstract;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PingPong.Server.Logic.Servers
+namespace Mamastalker.Server.Logic.Servers
 {
     public class TCPServer : IServer
     {
