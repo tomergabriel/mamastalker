@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Mamastalker.Client.Logic\Mamastalker.Client.Logic.csproj" />
     <ProjectReference Include="..\Mamastalker.Server.Logic\Mamastalker.Server.Logic.csproj" />
   </ItemGroup>
 
