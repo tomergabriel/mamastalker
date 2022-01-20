@@ -11,7 +11,7 @@ namespace Mamastalker.Common.Logic.DataConverters.Stringifies
         private readonly BinaryFormatter _binaryFormatter;
 
         public GenericBinaryFormatterStringify(BinaryFormatter binaryFormatter,
-                                             IStringify<byte[]> byteArrayStringify)
+                                               IStringify<byte[]> byteArrayStringify)
         {
             _binaryFormatter = binaryFormatter;
             _byteArrayStringify = byteArrayStringify;

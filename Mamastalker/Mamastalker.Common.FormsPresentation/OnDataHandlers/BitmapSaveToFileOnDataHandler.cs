@@ -17,12 +17,21 @@ namespace Mamastalker.Client.Data.OnDataHandlers
 
         public void OnDataEventHandler(TData data)
         {
-            var bitmap = _dataToBitmapDataConverter.Parse(data);
+            try
+            {
+                var bitmap = _dataToBitmapDataConverter.Parse(data);
 
-            var currnetTime = DateTime.Now;
-            var fileName = $"screenshot {currnetTime:yyyy.MM.dd hh_mm_ss_FFF}.jpg";
+                var currnetTime = DateTime.Now;
+                var fileName = $"screenshot {currnetTime:yyyy.MM.dd hh_mm_ss_FFF}.jpg";
 
-            bitmap.Save(fileName, ImageFormat.Jpeg);
+                bitmap.Save(fileName, ImageFormat.Jpeg);
+
+                Console.WriteLine("saved");
+            } catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
