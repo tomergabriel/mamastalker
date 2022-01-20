@@ -10,7 +10,6 @@
     <ProjectReference Include="..\Mamastalker.Common.FormsPresentation\Mamastalker.Common.FormsPresentation.csproj" />
     <ProjectReference Include="..\Mamastalker.Common.Logic\Mamastalker.Common.Logic.csproj" />
     <ProjectReference Include="..\Mamastalker.Server.Logic\Mamastalker.Server.Logic.csproj" />
-    <ProjectReference Include="..\Mamastalker.Server.Presentation\Mamastalker.Server.Presentation.csproj" />
   </ItemGroup>
 
 </Project>

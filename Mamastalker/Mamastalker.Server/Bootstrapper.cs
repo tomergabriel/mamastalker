@@ -18,9 +18,8 @@ namespace Mamastalker.Server
             var byteArrayStringify = new ByteArrayStringify();
 
             var bitmapStringify = new GenericBinaryFormatterStringify<Bitmap>(binaryFormatter, byteArrayStringify);
-            //var bitmapStringify = new GenericJsonStringify<Bitmap>();
 
-            OnDataHandler = new ScreenshotOnTimerResponseHandler<string>(bitmapStringify, byteArrayStringify);
+            OnDataHandler = new ScreenshotOnTimerResponseHandler<string>(bitmapStringify);
 
             var server = new TCPServer(OnDataHandler);
 

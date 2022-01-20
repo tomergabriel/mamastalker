@@ -12,18 +12,14 @@ namespace Mamastalker.Client.Logic.Clients
     {
         private readonly IStringify<TData> _stringify;
 
-        private readonly IStringify<byte[]> _byteArrayStringify;
-
         private readonly TcpClient _tcpClient;
 
         public Action<TData> OnReciveDataEvent { get; set; }
 
         public TCPClient(IStringify<TData> stringify,
-                         IStringify<byte[]> byteArrayStringify,
                          TcpClient tcpClient)
         {
             _stringify = stringify;
-            _byteArrayStringify = byteArrayStringify;
             _tcpClient = tcpClient;
         }
 
@@ -32,13 +28,13 @@ namespace Mamastalker.Client.Logic.Clients
             _tcpClient.Close();
         }
 
-        private void Listen()
+        private async Task Listen()
         {
             using var streamReader = new StreamReader(_tcpClient.GetStream());
 
             while (_tcpClient.Connected)
             {
-                var recivedData = streamReader.ReadToEnd();
+                var recivedData = await streamReader.ReadToEndAsync();
 
                 var parsedRecivedData = _stringify.Parse(recivedData);
 
@@ -46,26 +42,26 @@ namespace Mamastalker.Client.Logic.Clients
             }
         }
 
-        public void SendData(TData data)
+        public async Task SendData(TData data)
         {
             if (_tcpClient is null)
             {
                 return;
             }
 
-            var byteData = _byteArrayStringify.Parse(_stringify.Stringify(data));
+            var message = _stringify.Stringify(data);
 
             using var streamWriter = new StreamWriter(_tcpClient.GetStream());
 
-            streamWriter.WriteLine(byteData);
-            streamWriter.Flush();
+            await streamWriter.WriteLineAsync(message);
+            await streamWriter.FlushAsync();
         }
 
-        public void Connect(IPEndPoint endPoint)
+        public async Task Connect(IPEndPoint endPoint)
         {
             _tcpClient.Connect(endPoint);
 
-            Task.Run(() => Listen());
+            await Task.Run(() => Listen());
         }
     }
 }

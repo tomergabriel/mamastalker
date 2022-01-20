@@ -22,7 +22,7 @@ namespace Mamastalker.Client
 
             var bitmapStringify = new GenericBinaryFormatterStringify<Bitmap>(binaryFormatter, byteArrayStringify);
 
-            var client = new TCPClient<string>(stringStringify, byteArrayStringify, tcpClient);
+            var client = new TCPClient<string>(stringStringify, tcpClient);
 
             var onDataHandler = new BitmapSaveToFileOnDataHandler<string>(bitmapStringify);
 

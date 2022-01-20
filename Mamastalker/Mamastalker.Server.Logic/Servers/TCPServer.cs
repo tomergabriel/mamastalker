@@ -26,13 +26,13 @@ namespace Mamastalker.Server.Logic.Servers
             }
         }
 
-        private void Reply(byte[] message, StreamWriter streamWriter)
+        private async Task Reply(string message, StreamWriter streamWriter)
         {
-            streamWriter.WriteLine(message);
-            streamWriter.Flush();
+            await streamWriter.WriteLineAsync(message);
+            await streamWriter.FlushAsync();
         }
 
-        private void Listen(TcpClient tcpClient)
+        private async Task Listen(TcpClient tcpClient)
         {
             using var networkStream = tcpClient.GetStream();
             using var streamReader = new StreamReader(networkStream);
@@ -40,9 +40,9 @@ namespace Mamastalker.Server.Logic.Servers
 
             while (tcpClient.Connected)
             {
-                var data = streamReader.ReadToEnd();
+                var data = await streamReader.ReadToEndAsync();
 
-                _onDataHandler.HandleData(data, (replyMessage) => Reply(replyMessage, streamWriter));
+                _onDataHandler.HandleData(data, async (replyMessage) => await Reply(replyMessage, streamWriter));
             }
 
             tcpClient.Close();

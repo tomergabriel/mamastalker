@@ -12,17 +12,13 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
     {
         private readonly IStringify<Bitmap> _bitmapStringify;
 
-        private readonly IStringify<byte[]> _byteArrayStringify;
-
-        private Action<byte[]> _listeningCallback;
+        private Action<string> _listeningCallback;
 
         public bool Running { get; set; }
 
-        public ScreenshotOnTimerResponseHandler(IStringify<Bitmap> bitmapStringify,
-                                                IStringify<byte[]> byteArrayStringify)
+        public ScreenshotOnTimerResponseHandler(IStringify<Bitmap> bitmapStringify)
         {
             _bitmapStringify = bitmapStringify;
-            _byteArrayStringify = byteArrayStringify;
             Running = false;
         }
 
@@ -57,11 +53,9 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
 
                 var stringifiedBitmap = _bitmapStringify.Stringify(bitmap);
 
-                var bitmapBytes = _byteArrayStringify.Parse(stringifiedBitmap);
-
                 Console.WriteLine("took screenshot, sending...");
 
-                _listeningCallback?.Invoke(bitmapBytes);
+                _listeningCallback?.Invoke(stringifiedBitmap);
             } catch (Exception e)
             {
                 Console.WriteLine(e);
@@ -81,9 +75,9 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
             await UpdateLoop(refreshInterval);
         }
 
-        public void HandleData(TData data, Action<byte[]> reply)
+        public void HandleData(TData data, Action<string> reply)
         {
-            _listeningCallback += (byteData) => reply?.Invoke(byteData);
+            _listeningCallback += (data) => reply?.Invoke(data);
         }
     }
 }

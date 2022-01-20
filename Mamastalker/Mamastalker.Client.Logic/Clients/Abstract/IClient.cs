@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace Mamastalker.Client.Logic.Clients.Abstract
 {
@@ -7,8 +8,8 @@ namespace Mamastalker.Client.Logic.Clients.Abstract
     {
         Action<TData> OnReciveDataEvent { get; set; }
 
-        void SendData(TData data);
+        Task SendData(TData data);
 
-        void Connect(IPEndPoint endPoint);
+        Task Connect(IPEndPoint endPoint);
     }
 }

@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Client.Logic", "Mamastalker.Client.Logic\Mamastalker.Client.Logic.csproj", "{D0C565AF-50FD-4E75-9034-A75FCFFC7B70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Client.Presentation", "Mamastalker.Client.Presentation\Mamastalker.Client.Presentation.csproj", "{92930677-1243-4B62-B725-7F8700FD6454}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Common.ConsolePresentation", "Mamastalker.Common.ConsolePresentation\Mamastalker.Common.ConsolePresentation.csproj", "{901A3019-66DD-40C7-8D78-080D26C93034}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Common.Logic", "Mamastalker.Common.Logic\Mamastalker.Common.Logic.csproj", "{AA98716D-D570-46E9-9192-A46CDAA7B288}"
@@ -15,13 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Common.Presenta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Server.Logic", "Mamastalker.Server.Logic\Mamastalker.Server.Logic.csproj", "{7693C45F-17D6-41E2-9E7A-3E31020D7A93}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Server.Presentation", "Mamastalker.Server.Presentation\Mamastalker.Server.Presentation.csproj", "{639492D5-AC40-4B42-B943-3310633C95B7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Client", "Mamastalker.Client\Mamastalker.Client.csproj", "{316B944A-D268-40CB-AD57-2C20DB3B3EE0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Server", "Mamastalker.Server\Mamastalker.Server.csproj", "{4A376F04-2F82-4C90-9562-3F607FB34B13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mamastalker.Common.FormsPresentation", "Mamastalker.Common.FormsPresentation\Mamastalker.Common.FormsPresentation.csproj", "{7ACAF983-FF50-43C8-B54D-BD2E8109D794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Common.FormsPresentation", "Mamastalker.Common.FormsPresentation\Mamastalker.Common.FormsPresentation.csproj", "{7ACAF983-FF50-43C8-B54D-BD2E8109D794}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +29,6 @@ Global
 		{D0C565AF-50FD-4E75-9034-A75FCFFC7B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C565AF-50FD-4E75-9034-A75FCFFC7B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C565AF-50FD-4E75-9034-A75FCFFC7B70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92930677-1243-4B62-B725-7F8700FD6454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92930677-1243-4B62-B725-7F8700FD6454}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92930677-1243-4B62-B725-7F8700FD6454}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92930677-1243-4B62-B725-7F8700FD6454}.Release|Any CPU.Build.0 = Release|Any CPU
 		{901A3019-66DD-40C7-8D78-080D26C93034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{901A3019-66DD-40C7-8D78-080D26C93034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{901A3019-66DD-40C7-8D78-080D26C93034}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,10 +45,6 @@ Global
 		{7693C45F-17D6-41E2-9E7A-3E31020D7A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7693C45F-17D6-41E2-9E7A-3E31020D7A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7693C45F-17D6-41E2-9E7A-3E31020D7A93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{639492D5-AC40-4B42-B943-3310633C95B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{639492D5-AC40-4B42-B943-3310633C95B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{639492D5-AC40-4B42-B943-3310633C95B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{639492D5-AC40-4B42-B943-3310633C95B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{316B944A-D268-40CB-AD57-2C20DB3B3EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{316B944A-D268-40CB-AD57-2C20DB3B3EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{316B944A-D268-40CB-AD57-2C20DB3B3EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
