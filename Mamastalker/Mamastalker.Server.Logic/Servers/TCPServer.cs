@@ -1,8 +1,8 @@
 ﻿using Mamastalker.Server.Logic.ResponseHandlers.Abstract;
 using Mamastalker.Server.Logic.Servers.Abstract;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Mamastalker.Server.Logic.Servers
@@ -26,50 +26,23 @@ namespace Mamastalker.Server.Logic.Servers
             }
         }
 
-        private void Reply(byte[] message, TcpClient handlerSocket)
+        private void Reply(byte[] message, StreamWriter streamWriter)
         {
-            var finalizedMessage = new byte[message.Length + 5];
-
-            message.CopyTo(finalizedMessage, 0);
-            finalizedMessage[^5] = (byte)'<';
-            finalizedMessage[^4] = (byte)'E';
-            finalizedMessage[^3] = (byte)'O';
-            finalizedMessage[^2] = (byte)'F';
-            finalizedMessage[^1] = (byte)'>';
-
-            var networkStream = handlerSocket.GetStream();
-            networkStream.Write(finalizedMessage);
-        }
-
-        private string ListenLoop(TcpClient tcpClient)
-        {
-            var data = string.Empty;
-
-            var networkStream = tcpClient.GetStream();
-
-            while (true)
-            {
-                var bytes = new byte[32768];
-                var bytesReceived = networkStream.Read(bytes);
-                data += Encoding.ASCII.GetString(bytes, 0, bytesReceived);
-
-                if (data.EndsWith("<EOF>"))
-                {
-                    data = data[0..^5];
-                    break;
-                }
-            }
-
-            return data;
+            streamWriter.WriteLine(message);
+            streamWriter.Flush();
         }
 
         private void Listen(TcpClient tcpClient)
         {
+            using var networkStream = tcpClient.GetStream();
+            using var streamReader = new StreamReader(networkStream);
+            using var streamWriter = new StreamWriter(networkStream);
+
             while (tcpClient.Connected)
             {
-                var data = ListenLoop(tcpClient);
+                var data = streamReader.ReadToEnd();
 
-                _onDataHandler.HandleData(data, (replyMessage) => Reply(replyMessage, tcpClient));
+                _onDataHandler.HandleData(data, (replyMessage) => Reply(replyMessage, streamWriter));
             }
 
             tcpClient.Close();
@@ -83,7 +56,7 @@ namespace Mamastalker.Server.Logic.Servers
 
             while (true)
             {
-                var tcpClient = _tcpListener.AcceptTcpClient();
+                using var tcpClient = _tcpListener.AcceptTcpClient();
 
                 Task.Run(() => Listen(tcpClient));
             }

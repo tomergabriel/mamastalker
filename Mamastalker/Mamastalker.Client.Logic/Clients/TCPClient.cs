@@ -1,9 +1,9 @@
 ﻿using Mamastalker.Client.Logic.Clients.Abstract;
 using Mamastalker.Common.Logic.DataConverters.Stringifies.Abstract;
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Mamastalker.Client.Logic.Clients
@@ -32,34 +32,13 @@ namespace Mamastalker.Client.Logic.Clients
             _tcpClient.Close();
         }
 
-        private string ListenLoop()
-        {
-            var data = string.Empty;
-
-            var networkStream = _tcpClient.GetStream();
-
-            while (true)
-            {
-                var bytes = new byte[32768];
-
-                var bytesReceived = networkStream.Read(bytes);
-                data += Encoding.ASCII.GetString(bytes, 0, bytesReceived);
-
-                if (data.EndsWith("<EOF>"))
-                {
-                    data = data[0..^5];
-                    break;
-                }
-            }
-
-            return data;
-        }
-
         private void Listen()
         {
+            using var streamReader = new StreamReader(_tcpClient.GetStream());
+
             while (_tcpClient.Connected)
             {
-                var recivedData = ListenLoop();
+                var recivedData = streamReader.ReadToEnd();
 
                 var parsedRecivedData = _stringify.Parse(recivedData);
 
@@ -74,13 +53,12 @@ namespace Mamastalker.Client.Logic.Clients
                 return;
             }
 
-            var stringifiedData = _stringify.Stringify(data);
+            var byteData = _byteArrayStringify.Parse(_stringify.Stringify(data));
 
-            var byteData = _byteArrayStringify.Parse(stringifiedData + "<EOF>");
+            using var streamWriter = new StreamWriter(_tcpClient.GetStream());
 
-            var networkStream = _tcpClient.GetStream();
-
-            networkStream.Write(byteData);
+            streamWriter.WriteLine(byteData);
+            streamWriter.Flush();
         }
 
         public void Connect(IPEndPoint endPoint)
