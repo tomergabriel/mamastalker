@@ -65,9 +65,7 @@ namespace Mamastalker.Server.Logic.Servers
             {
                 var data = ListenLoop(tcpClient);
 
-                var replyMessage = _onDataHandler.HandleData(data);
-
-                Reply(replyMessage, tcpClient);
+                _onDataHandler.HandleData(data, (replyMessage) => Reply(replyMessage, tcpClient));
             }
 
             tcpClient.Close();
