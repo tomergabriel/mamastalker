@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mamastalker.Common.ConsolePresentation\Mamastalker.Common.ConsolePresentation.csproj" />
+    <ProjectReference Include="..\Mamastalker.Common.Logic\Mamastalker.Common.Logic.csproj" />
+    <ProjectReference Include="..\Mamastalker.Common\Mamastalker.Common.csproj" />
+    <ProjectReference Include="..\Mamastalker.Server.Logic\Mamastalker.Server.Logic.csproj" />
+    <ProjectReference Include="..\Mamastalker.Server.Presentation\Mamastalker.Server.Presentation.csproj" />
+  </ItemGroup>
+
 </Project>

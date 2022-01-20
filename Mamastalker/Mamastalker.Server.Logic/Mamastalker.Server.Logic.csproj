@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mamastalker.Common.Logic\Mamastalker.Common.Logic.csproj" />
+  </ItemGroup>
+
 </Project>
