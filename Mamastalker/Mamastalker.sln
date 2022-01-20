@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Server", "Mamas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mamastalker.Common.FormsPresentation", "Mamastalker.Common.FormsPresentation\Mamastalker.Common.FormsPresentation.csproj", "{7ACAF983-FF50-43C8-B54D-BD2E8109D794}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mamastalker.Client.Data", "Mamastalker.Client.Data\Mamastalker.Client.Data.csproj", "{C0F98FA7-173B-4BB6-BB89-D8AD460E3FAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{7ACAF983-FF50-43C8-B54D-BD2E8109D794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ACAF983-FF50-43C8-B54D-BD2E8109D794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ACAF983-FF50-43C8-B54D-BD2E8109D794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0F98FA7-173B-4BB6-BB89-D8AD460E3FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0F98FA7-173B-4BB6-BB89-D8AD460E3FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0F98FA7-173B-4BB6-BB89-D8AD460E3FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0F98FA7-173B-4BB6-BB89-D8AD460E3FAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
