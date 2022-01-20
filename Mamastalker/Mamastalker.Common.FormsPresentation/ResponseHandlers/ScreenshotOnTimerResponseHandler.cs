@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Mamastalker.Server.Logic.ResponseHandlers
+namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
 {
     public class ScreenshotOnTimerResponseHandler<TData> : IResponseHandler<TData>
     {
