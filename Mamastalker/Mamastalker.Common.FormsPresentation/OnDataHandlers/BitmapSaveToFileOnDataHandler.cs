@@ -26,7 +26,7 @@ namespace Mamastalker.Client.Data.OnDataHandlers
 
                 bitmap.Save(fileName, ImageFormat.Jpeg);
 
-                Console.WriteLine("saved");
+                Console.WriteLine("debug: saved screenshot!");
             } catch (Exception e)
             {
                 Console.WriteLine(e);

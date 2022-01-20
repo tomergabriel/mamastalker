@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Mamastalker.Client.Logic.Clients
@@ -28,13 +29,34 @@ namespace Mamastalker.Client.Logic.Clients
             _tcpClient.Close();
         }
 
-        private async Task Listen()
+        private string ListenLoop(NetworkStream networkStream)
         {
-            using var streamReader = new StreamReader(_tcpClient.GetStream());
+            var data = string.Empty;
 
+            while (true)
+            {
+                var bytes = new byte[1024];
+
+                var bytesReceived = networkStream.Read(bytes);
+                data += Encoding.ASCII.GetString(bytes, 0, bytesReceived);
+
+                if (data.Contains((char)4))
+                {
+                    data = data[0..^1];
+                    break;
+                }
+            }
+
+            Console.WriteLine("debug: recived data");
+
+            return data;
+        }
+
+        private void Listen()
+        {
             while (_tcpClient.Connected)
             {
-                var recivedData = await streamReader.ReadToEndAsync();
+                var recivedData = ListenLoop(_tcpClient.GetStream());
 
                 var parsedRecivedData = _stringify.Parse(recivedData);
 
@@ -42,9 +64,9 @@ namespace Mamastalker.Client.Logic.Clients
             }
         }
 
-        public async Task SendData(TData data)
+        public void SendData(TData data)
         {
-            if (_tcpClient is null)
+            if (!_tcpClient.Connected)
             {
                 return;
             }
@@ -53,15 +75,19 @@ namespace Mamastalker.Client.Logic.Clients
 
             using var streamWriter = new StreamWriter(_tcpClient.GetStream());
 
-            await streamWriter.WriteLineAsync(message);
-            await streamWriter.FlushAsync();
+            Console.WriteLine("debug: send data");
+
+            streamWriter.Write(message);
+            streamWriter.Flush();
         }
 
-        public async Task Connect(IPEndPoint endPoint)
+        public void Connect(IPEndPoint endPoint)
         {
             _tcpClient.Connect(endPoint);
 
-            await Task.Run(() => Listen());
+            Console.WriteLine("debug: connected");
+
+            Task.Run(Listen);
         }
     }
 }

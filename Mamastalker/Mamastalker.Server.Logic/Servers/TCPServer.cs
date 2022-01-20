@@ -1,8 +1,10 @@
 ﻿using Mamastalker.Server.Logic.ResponseHandlers.Abstract;
 using Mamastalker.Server.Logic.Servers.Abstract;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Mamastalker.Server.Logic.Servers
@@ -26,24 +28,49 @@ namespace Mamastalker.Server.Logic.Servers
             }
         }
 
-        private async Task Reply(string message, StreamWriter streamWriter)
+        private void Reply(string message, TcpClient tcpClient)
         {
-            await streamWriter.WriteLineAsync(message);
-            await streamWriter.FlushAsync();
+            var streamWriter = new StreamWriter(tcpClient.GetStream());
+
+            Console.WriteLine("debug: send data");
+
+            streamWriter.Write(message);
+            streamWriter.Flush();
         }
 
-        private async Task Listen(TcpClient tcpClient)
+        private string ListenLoop(NetworkStream networkStream)
         {
-            using var networkStream = tcpClient.GetStream();
-            using var streamReader = new StreamReader(networkStream);
-            using var streamWriter = new StreamWriter(networkStream);
+            var data = string.Empty;
 
+            while (true)
+            {
+                var bytes = new byte[1024];
+
+                var bytesReceived = networkStream.Read(bytes);
+                data += Encoding.ASCII.GetString(bytes, 0, bytesReceived);
+
+                if (data.Contains((char)4))
+                {
+                    data = data[0..^1];
+                    break;
+                }
+            }
+
+            Console.WriteLine("debug: recieve data");
+
+            return data;
+        }
+
+        private void Listen(TcpClient tcpClient)
+        {
             while (tcpClient.Connected)
             {
-                var data = await streamReader.ReadToEndAsync();
+                var data = ListenLoop(tcpClient.GetStream());
 
-                _onDataHandler.HandleData(data, async (replyMessage) => await Reply(replyMessage, streamWriter));
+                _onDataHandler.HandleData(data, (replyMessage) => Reply(replyMessage, tcpClient));
             }
+
+            Console.WriteLine("debug: client disconnected");
 
             tcpClient.Close();
         }
@@ -56,7 +83,9 @@ namespace Mamastalker.Server.Logic.Servers
 
             while (true)
             {
-                using var tcpClient = _tcpListener.AcceptTcpClient();
+                var tcpClient = _tcpListener.AcceptTcpClient();
+
+                Console.WriteLine("debug: new client");
 
                 Task.Run(() => Listen(tcpClient));
             }

@@ -53,7 +53,7 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
 
                 var stringifiedBitmap = _bitmapStringify.Stringify(bitmap);
 
-                Console.WriteLine("took screenshot, sending...");
+                Console.WriteLine("debug: took screenshot, sending...");
 
                 _listeningCallback?.Invoke(stringifiedBitmap);
             } catch (Exception e)

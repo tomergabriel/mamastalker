@@ -8,8 +8,8 @@ namespace Mamastalker.Client.Logic.Clients.Abstract
     {
         Action<TData> OnReciveDataEvent { get; set; }
 
-        Task SendData(TData data);
+        void SendData(TData data);
 
-        Task Connect(IPEndPoint endPoint);
+        void Connect(IPEndPoint endPoint);
     }
 }
