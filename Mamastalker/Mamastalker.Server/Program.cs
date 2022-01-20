@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Threading.Tasks;
 
 namespace Mamastalker.Server
 {
@@ -12,7 +13,9 @@ namespace Mamastalker.Server
 
             var bootstrapper = new Bootstrapper();
 
-            var socketServer = bootstrapper.BootstrapSocketSever();
+            var socketServer = bootstrapper.BootstrapSever();
+
+            Task.Run(() => bootstrapper.OnDataHandler.StartUpdateLoop(int.Parse(args[1])));
 
             socketServer.RunOn(endPoint);
         }

@@ -1,5 +1,4 @@
-﻿using Mamastalker.Common.Logic.DataConverters.Abstract;
-using Mamastalker.Common.Logic.DataConverters.Stringifies.Abstract;
+﻿using Mamastalker.Common.Logic.DataConverters.Stringifies.Abstract;
 using Mamastalker.Server.Logic.ResponseHandlers.Abstract;
 using System;
 using System.Drawing;
@@ -27,11 +26,11 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
             Running = false;
         }
 
-        private async Task UpdateLoop()
+        private async Task UpdateLoop(int refreshInterval)
         {
             while (Running)
             {
-                await Task.Delay(1000);
+                await Task.Delay(refreshInterval);
 
                 SendScreenshot();
             }
@@ -61,7 +60,7 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
             _listeningCallback?.Invoke(bitmapBytes);
         }
 
-        public async Task StartUpdateLoop()
+        public async Task StartUpdateLoop(int refreshInterval)
         {
             if (Running)
             {
@@ -70,7 +69,7 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
 
             Running = true;
 
-            await UpdateLoop();
+            await UpdateLoop(refreshInterval);
         }
 
         public void HandleData(TData data, Action<byte[]> reply)

@@ -1,27 +1,26 @@
-﻿using Mamastalker.Common;
-using Mamastalker.Common.ConsolePresentation;
+﻿using Mamastalker.Common.FormsPresentation.ResponseHandlers;
 using Mamastalker.Common.Logic.DataConverters.Stringifies;
 using Mamastalker.Server.Logic.Servers;
 using Mamastalker.Server.Logic.Servers.Abstract;
-using Mamastalker.Server.Presentation.ResponseHandlers;
+using System.Drawing;
 
 namespace Mamastalker.Server
 {
     public class Bootstrapper
     {
-        public IServer BootstrapSocketSever()
+        public ScreenshotOnTimerResponseHandler<string> OnDataHandler { get; private set; }
+
+        public IServer BootstrapSever()
         {
-            var output = new ConsoleOutput<Person>();
+            var byteArrayStringify = new ByteArrayStringify();
 
-            var stringToByteArrayDataParser = new ByteArrayStringify();
+            var bitmapStringify = new GenericJsonStringify<Bitmap>();
 
-            var stringToPersonDataParser = new GenericJsonStringify<Person>();
+            OnDataHandler = new ScreenshotOnTimerResponseHandler<string>(bitmapStringify, byteArrayStringify);
 
-            var onDataHandler = new OutputAndSendBackResponseHandler<string, Person>(output, stringToPersonDataParser, stringToByteArrayDataParser);
+            var server = new TCPServer(OnDataHandler);
 
-            var socketServer = new TCPServer(onDataHandler);
-
-            return socketServer;
+            return server;
         }
 
     }
