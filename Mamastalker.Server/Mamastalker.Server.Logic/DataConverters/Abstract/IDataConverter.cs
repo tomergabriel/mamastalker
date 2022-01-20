@@ -1,4 +1,4 @@
-﻿namespace Mamastalker.Server.Logic.DataConverter.Abstract
+﻿namespace Mamastalker.Server.Logic.DataConverters.Abstract
 {
     public interface IDataConverter<TParseFrom, TParseTo>
     {

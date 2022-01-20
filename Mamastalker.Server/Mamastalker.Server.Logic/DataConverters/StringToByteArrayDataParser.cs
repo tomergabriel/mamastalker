@@ -1,7 +1,7 @@
-﻿using Mamastalker.Server.Logic.DataConverter.Abstract;
+﻿using Mamastalker.Server.Logic.DataConverters.Abstract;
 using System.Text;
 
-namespace Mamastalker.Server.Logic.DataConverter
+namespace Mamastalker.Server.Logic.DataConverters
 {
     public class StringToByteArrayDataParser : IDataConverter<string, byte[]>
     {
