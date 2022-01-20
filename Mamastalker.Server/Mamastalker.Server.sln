@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mamastalker.Server", "Mamastalker.Server\Mamastalker.Server.csproj", "{DF3A868F-19F7-4E58-961E-8662A4FBC708}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF3A868F-19F7-4E58-961E-8662A4FBC708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF3A868F-19F7-4E58-961E-8662A4FBC708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF3A868F-19F7-4E58-961E-8662A4FBC708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF3A868F-19F7-4E58-961E-8662A4FBC708}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49E363F0-DB96-4179-9AB6-F0042F37C8C5}
+	EndGlobalSection
+EndGlobal
