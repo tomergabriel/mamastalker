@@ -40,14 +40,14 @@ namespace Mamastalker.Client.Logic.Clients
 
             while (true)
             {
-                var bytes = new byte[1024];
+                var bytes = new byte[32768];
 
                 var bytesReceived = networkStream.Read(bytes);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesReceived);
 
-                if (data.Contains((char)4))
+                if (data.EndsWith("<EOF>"))
                 {
-                    data = data[0..^1];
+                    data = data[0..^5];
                     break;
                 }
             }
@@ -76,7 +76,7 @@ namespace Mamastalker.Client.Logic.Clients
 
             var stringifiedData = _stringify.Stringify(data);
 
-            var byteData = _byteArrayStringify.Parse(stringifiedData + (char)4);
+            var byteData = _byteArrayStringify.Parse(stringifiedData + "<EOF>");
 
             var networkStream = _tcpClient.GetStream();
 

@@ -28,10 +28,14 @@ namespace Mamastalker.Server.Logic.Servers
 
         private void Reply(byte[] message, TcpClient handlerSocket)
         {
-            var finalizedMessage = new byte[message.Length + 1];
+            var finalizedMessage = new byte[message.Length + 5];
 
             message.CopyTo(finalizedMessage, 0);
-            finalizedMessage[^1] = 4;
+            finalizedMessage[^5] = (byte)'<';
+            finalizedMessage[^4] = (byte)'E';
+            finalizedMessage[^3] = (byte)'O';
+            finalizedMessage[^2] = (byte)'F';
+            finalizedMessage[^1] = (byte)'>';
 
             var networkStream = handlerSocket.GetStream();
             networkStream.Write(finalizedMessage);
@@ -45,13 +49,13 @@ namespace Mamastalker.Server.Logic.Servers
 
             while (true)
             {
-                var bytes = new byte[1024];
+                var bytes = new byte[32768];
                 var bytesReceived = networkStream.Read(bytes);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesReceived);
 
-                if (data.Contains((char)4))
+                if (data.EndsWith("<EOF>"))
                 {
-                    data = data[0..^1];
+                    data = data[0..^5];
                     break;
                 }
             }

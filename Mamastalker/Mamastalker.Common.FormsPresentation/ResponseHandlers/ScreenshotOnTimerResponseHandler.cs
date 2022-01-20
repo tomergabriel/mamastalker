@@ -44,9 +44,9 @@ namespace Mamastalker.Common.FormsPresentation.ResponseHandlers
                                     screen.Bounds.Height,
                                     PixelFormat.Format32bppArgb);
 
-            var graphics = Graphics.FromImage(bitmap);
+            var bitmapGraphics = Graphics.FromImage(bitmap);
 
-            graphics.CopyFromScreen(screen.Bounds.X,
+            bitmapGraphics.CopyFromScreen(screen.Bounds.X,
                                     screen.Bounds.Y,
                                     0,
                                     0,

@@ -11,7 +11,6 @@
     <ProjectReference Include="..\Mamastalker.Common.ConsolePresentation\Mamastalker.Common.ConsolePresentation.csproj" />
     <ProjectReference Include="..\Mamastalker.Common.FormsPresentation\Mamastalker.Common.FormsPresentation.csproj" />
     <ProjectReference Include="..\Mamastalker.Common.Logic\Mamastalker.Common.Logic.csproj" />
-    <ProjectReference Include="..\Mamastalker.Common\Mamastalker.Common.csproj" />
   </ItemGroup>
 
 </Project>

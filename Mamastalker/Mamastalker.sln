@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Client.Logic", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Client.Presentation", "Mamastalker.Client.Presentation\Mamastalker.Client.Presentation.csproj", "{92930677-1243-4B62-B725-7F8700FD6454}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Common", "Mamastalker.Common\Mamastalker.Common.csproj", "{A40AF8B2-3C59-4CD3-8F14-827B3FBC5279}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Common.ConsolePresentation", "Mamastalker.Common.ConsolePresentation\Mamastalker.Common.ConsolePresentation.csproj", "{901A3019-66DD-40C7-8D78-080D26C93034}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mamastalker.Common.Logic", "Mamastalker.Common.Logic\Mamastalker.Common.Logic.csproj", "{AA98716D-D570-46E9-9192-A46CDAA7B288}"
@@ -39,10 +37,6 @@ Global
 		{92930677-1243-4B62-B725-7F8700FD6454}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92930677-1243-4B62-B725-7F8700FD6454}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92930677-1243-4B62-B725-7F8700FD6454}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A40AF8B2-3C59-4CD3-8F14-827B3FBC5279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A40AF8B2-3C59-4CD3-8F14-827B3FBC5279}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A40AF8B2-3C59-4CD3-8F14-827B3FBC5279}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A40AF8B2-3C59-4CD3-8F14-827B3FBC5279}.Release|Any CPU.Build.0 = Release|Any CPU
 		{901A3019-66DD-40C7-8D78-080D26C93034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{901A3019-66DD-40C7-8D78-080D26C93034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{901A3019-66DD-40C7-8D78-080D26C93034}.Release|Any CPU.ActiveCfg = Release|Any CPU

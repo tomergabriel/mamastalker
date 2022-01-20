@@ -1,5 +1,4 @@
-﻿using Mamastalker.Common;
-using System;
+﻿using System;
 using System.Net;
 
 namespace Mamastalker.Client

@@ -7,12 +7,16 @@ namespace Mamastalker.Common.Logic.DataConverters.Stringifies
     {
         public T Parse(string data)
         {
-            return JsonSerializer.Deserialize<T>(data);
+            var parsedData = JsonSerializer.Deserialize<T>(data);
+
+            return parsedData;
         }
 
         public string Stringify(T data)
         {
-            return JsonSerializer.Serialize(data);
+            var serialized = JsonSerializer.Serialize(data);
+
+            return serialized;
         }
     }
 }
